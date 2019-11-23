@@ -140,6 +140,7 @@ var resize = function resize() {
   if (resizing) return;
   resizing = true;
   var newSize = calculateGrid(container);
+  c;
 
   if (newSize >= currentSize) {
     new Array(newSize).fill(undefined).forEach(function (_, i) {
@@ -178,7 +179,7 @@ var getRandomColor = function getRandomColor() {
 var start = function start(_a) {
   var parent = _a.parentElement;
   var style = document.createElement('style');
-  style.innerHTML = "\n    .flex-container {\n        flex-wrap: wrap;\n        display: flex;\n        align-content: flex-start;\n        justify-content: center;\n        margin: 0;\n    }\n    .square{\n        width:10px;\n        height:10px;\n        background-color:pink;\n        border: 2px solid white;\n        opacity:1;\n    }\n    .hidden{\n        opacity:0;\n        visibility: hidden;\n    }\n    ";
+  style.innerHTML = "\n    .flex-container {\n        flex-wrap: wrap;\n        display: flex;\n        align-content: flex-start;\n        justify-content: center;\n        margin: 0;\n    }\n    .square{\n        width:" + (minSquare - 4) + "px;\n        height:" + (minSquare - 4) + "px;\n        margin: 2px;\n        box-sizing: border-box;\n        opacity:1;\n    }\n    .hidden{\n        opacity:0;\n        visibility: hidden;\n    }\n    ";
   document.head.appendChild(style);
   parent.className = "flex-container";
   container = parent;
